@@ -1,0 +1,29 @@
+{
+  "name": "lodown-keriehr",
+  "version": "1.0.1",
+  "description": "first npm library for lodown",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha -- test/ -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keriehr/lodown.git"
+  },
+  "author": "Keri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keriehr/lodown/issues"
+  },
+  "homepage": "https://github.com/keriehr/lodown#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "i": "^0.3.6",
+    "istanbul": "^0.4.5",
+    "mocha": "^7.0.1",
+    "sinon": "^9.0.0"
+  }
+}

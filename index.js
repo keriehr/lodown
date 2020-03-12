@@ -49,9 +49,9 @@ function identity(value){
  * typeOf:
  * takes a value and returns a string that is the type of that value.
  * 
- * @param value: can be any value
+ * @param {any data type} value: can be any value
  * 
- * @return {data type}: will return a string stating what the type of the value is
+ * @return {string}: will return a string stating what the type of the value is
  * 
  **/
  
@@ -96,12 +96,17 @@ else if (typeof value === 'object'){
 /**
  * 
  * first:
- * designed to return a number of items in an array
+ * designed to return first number of items in an array via given number.  our given number tells us what elements we want to take from 
+ * the array
  * 
- * @param array: should be an array containing elements
- * @param number: a positive number 
+ * @param {a literal array} array: a array literal, that does or does not contain elements
+ * @param {a numerical value} num (number): a number/ numerical value
  * 
- * @return: will return a blank array, the first element of the array, or a number of items from the array, specified by the number parameter
+ * @return {array or element/value}: will return a blank array if it is not an array or the given number is negative,
+ * will return an array of all the elements if the number if larger than the array, 
+ * will return the first element of the array if no number is given or the argument is not a number,
+ * will return the first number of items from the array via the given number. the given number tells us how many
+ * of the elements we want starting at the zero index.
  * 
  * */
  
@@ -129,10 +134,13 @@ else if (typeof value === 'object'){
   * last:
   * designed to return the last element or the last number items in an array via the given number
   * 
-  * @param array: a literal array with elements
-  * @param number: a positive number
+  * @param {literal array} array: a literal array with elements
+  * @param {a numerical value (a number)} num: a number
   * 
-  * @return: will return an empty array, last element in array, or last number of items in array specified by number parameter
+  * @return {literal array, element/value}: if not an array it will return an empty array, 
+  * will return the last element in array if no number is given or if it is not a number, 
+  * will return last number of items in array specified by number parameter, or 
+  * will return the array with all the elements if the number is larger than the array
   * 
   * */
  
@@ -153,10 +161,11 @@ else if (typeof value === 'object'){
    * indexOf:
    * will search through an array and the first time it finds the given value inside that array, it will return a cooresponding index.
    * 
-   * @param array: a literal array with elements
-   * @param value: any data type
+   * @param {a literal array} array: a literal array with elements
+   * @param {any data type} value: any data type
    * 
-   * @return: will return the index position of the value if it has matching an element inside the array. but if it is not in the  array it will return -1
+   * @return{number}: will return the index position of the value on the first occurance if it has matching an element 
+   * inside the array. but if it is not in the array it will return -1
    * 
    * */
 
@@ -172,10 +181,10 @@ function indexOf(array, value){
  * contains:
  * will check to see if an array has a value. uses a ternary operator
  * 
- * @param array: a literal array
- * @param value: any data type
+ * @param {literal array} array: a literal array
+ * @param {any data type} value: any data type
  * 
- * @return: returns true or false 
+ * @return {boolean}: returns true or false based off if the array contains a given value
  * */
  
  function contains(array, value){
@@ -196,11 +205,11 @@ function indexOf(array, value){
 /**
  * unique:
  * removes duplicate elements from an array
- * uses indexOf function
+ * uses indexOf()
  * 
- * @param array: a literal array
+ * @param {literal array} array: a literal array
  * 
- * @return: returns a new array with the dupliicate elements removed.
+ * @return {literal array}: returns a new array with the dupliicate elements removed.
  * 
  * */
  
@@ -221,12 +230,13 @@ return unique;
  /**
   * filter:
   * its a function that filters through an array and adds elements that passed as true to a new array
+  * as long as it has the passing arguments of element, index, and array
   * 
-  * @param array: a literal array with elements
-  * @param function: a function that filters through the elements
+  * @param {literal array} array: a literal array with elements
+  * @param {function} func: a function that filters through the elements
   * 
-  * @return: returns an array filled with elements that came back true after being passed through the function.
-  * 
+  * @return {array}: returns an array filled with elements that came back true after being passed through the function.
+  *  //note: use filter to filter through users || names
   * */
   
  function filter(array, func){
@@ -251,11 +261,12 @@ return unique;
  * 
  * reject:
  *  its a function that filters through an array and adds elements that passed as false to a new array
-  * 
- * @param array: a literal array
- * @param function: the function to be applied to each value in the array
+ * as long as it has the passing arguments of the element, index, and array. 
  * 
- * @return: returns a new array of elements that returned false from the function
+ * @param {literal array} array: a literal array
+ * @param {function} func: the function to be applied to each value in the array
+ * 
+ * @return {array}: returns a new array of elements that returned false from the function
  * 
  * */
    
@@ -285,11 +296,12 @@ return unique;
    * 
    * partition:
    * a function that sorts true and false values in separate arrays, then adds those 2 separate arrays into one array.
+   * boolean values are determined by if it has the passing arguments element, index and array
    * 
-   * @param array: a literal array
-   * @param function: the function to be applied to each value in the array
+   * @param {literal array} array: a literal array
+   * @param {function} func: the function to be applied to each value in the array
    * 
-   * @return: returns an array consisting of 2 arrays.
+   * @return {array}: returns an array consisting of 2 arrays.
    * */
    
    
@@ -325,11 +337,11 @@ return unique;
    * map:
    * calls a function for each element in the collection, saves the new values and returns it in an array.
    * 
-   * @param collection: an array or object
-   * @param function: an action to carry out
+   * @param {array or object} collection: an array or object
+   * @param {function} action: an action to carry out
    * 
-   * @return: returns new affected array 
-   * 
+   * @return {array}: returns new effected array 
+   * //note: works on each element, use it when your affecting each element
   **/
   
   function map(collection, action){
@@ -361,10 +373,10 @@ return unique;
    * pluck:
    * takes the property from each object inside the array and returns it in a new array.
    * 
-   * @param array of objects: aliteral array consisting of objects.
-   * @param property: a keys' value.
+   * @param {array of objects} array: aliteral array consisting of objects.
+   * @param {a key of the object} property: a keys' value.
    * 
-   * @return: returns an array consisiting of the values of properties from the array
+   * @return {array}: returns an array consisiting of the values of properties from the array
    * 
    * */
    
@@ -393,11 +405,12 @@ return unique;
  * 
  * every:
  * checks every elemnt inside the collection and returns true if everything is true. If there is one false, it will return false.
+ * if the function is not provided, it will return true if every element is truthy, otherwise it will return false
  * 
- * @param collection: an object or array
- * @param function: an action to perform
+ * @param {array or object} collection: an object or array
+ * @param {function} func: an action to perform
  * 
- * @return:   returns a true or false value
+ * @return {boolean}: returns a true or false value
  * */
  
  
@@ -444,12 +457,14 @@ return unique;
  /** 
   * 
   * some:
-  * iterates through the collection and return true or false as the result.
+  * iterates through the collection and return true or false as the result. if no function is given it will return true if any elements 
+  * are truthy; it will return false if ALL elements are falsey.
   * 
-  * @param collection: an object or array.
-  * @param function: an action to perform.
+  * @param {array or object}collection: an object or array.
+  * @param {function} func: an action to perform.
   * 
-  * @return: returns true if at least one element returns true. if all   the elements return false, then this function returns false.
+  * @return {boolean}: returns true if at least one element returns true. if all the elements return false, 
+  * then this function returns false.
   * 
   * */
   
@@ -495,13 +510,16 @@ return unique;
   /**
    * 
    * reduce:
-   * iterates through an array and returns the value of the final function call.
+   * iterates through an array and returns the value of the final function call. if there is no seed, we use the 
+   * first element in the array. reduce calls the function for each element in the given array passing the arguments:
+   * previous result aka seed, element, index. it stores the returned value in the accumulator aka seed. and then returns that final 
+   * accumulated value
    * 
-   * @param array: a literal array
-   * @param function: an action to perform
-   * @param seed: takes the place of the preivous result to start with
+   * @param {literal array} array: a literal array
+   * @param {function} func: an action to perform
+   * @param {whatever data type the value of the final function call is} seed: takes the place of the previous result to start with
    * 
-   * @return: returns the value of the final function call
+   * @return{datatype of what we want our final value to be}: returns the value of the final function call
    * 
    * */
    
@@ -543,9 +561,9 @@ return unique;
    * extend:
    * copies properties from object 2 to object 1 and returns the updated object 1
    * 
-   * @param object: two or more objects.
+   * @param {literal object} object: two or more objects.
    * 
-   * @return: returns an updated object
+   * @return{literal object}: returns an updated object
    * 
    * */
    
